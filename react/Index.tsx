@@ -1,90 +1,93 @@
-/* eslint-disable no-console */
-import { injectIntl } from 'react-intl'
-import { SimilarProductsVariantsProps } from './typings/global'
-
-import { useProduct } from 'vtex.product-context'
-import { Query } from 'react-apollo'
-import productRecommendationsQuery from './queries/productRecommendations.gql'
-import path from 'ramda/es/path'
 import React from 'react'
+import type { ProductTypes } from 'vtex.product-context'
+import { useProduct } from 'vtex.product-context'
+import { useQuery } from 'react-apollo'
 import { useCssHandles } from 'vtex.css-handles'
+import { useRuntime } from 'vtex.render-runtime'
 
-const CSS_HANDLES = ['variants', 'title', 'var-wrap', 'img_wrap', 'img'] as const
+import productRecommendationsQuery from './queries/productRecommendations.gql'
 
-const SimilarProductsVariants: StorefrontFunctionComponent<
-  SimilarProductsVariantsProps
-> = ({ productQuery }) => {
+interface SimilarProductsVariantsProps {
+  productQuery: {
+    product: {
+      productId: string
+    }
+  }
+}
+
+const CSS_HANDLES = [
+  'variants',
+  'title',
+  'var-wrap',
+  'img_wrap',
+  'img',
+] as const
+
+function SimilarProductsVariants({
+  productQuery,
+}: SimilarProductsVariantsProps) {
   const handles = useCssHandles(CSS_HANDLES)
   const productContext = useProduct()
-
+  const { route } = useRuntime()
   const productId =
-    path(['product', 'productId'], productQuery) ||
-    path(['product', 'productId'], productContext)
+    productQuery?.product?.productId ?? productContext?.product?.productId
+
+  const { data, loading, error } = useQuery(productRecommendationsQuery, {
+    variables: {
+      identifier: { field: 'id', value: productId },
+      type: `similars`,
+    },
+    skip: !productId,
+  })
+
+  if (loading || error) return null
+
+  const { productRecommendations } = data
+
+  const { products } = {
+    products: productRecommendations || [],
+  }
+
+  const unique = [
+    ...new Set<string>(
+      products.map((item: ProductTypes.Product) => item.productId)
+    ),
+  ]
+
+  const items: ProductTypes.Product[] = []
+
+  unique.forEach(id => {
+    const item = products.find(
+      (element: ProductTypes.Product) => element.productId === id
+    )
+
+    if (item) items.push(item)
+  })
 
   return (
-    <Query
-      query={productRecommendationsQuery}
-      variables={{
-        identifier: { field: 'id', value: productId },
-        type: `similars`,
-      }}
-    >
-      {({ loading, error, data }: any) => {
-        if (loading || error) return null
-
-        const { productRecommendations } = data
-
-        const { products } = {
-          products: productRecommendations || [],
-        }
-
-        const unique = [...new Set(products.map((item: any) => item.productId))]
-
-        let items: any[] = []
-
-        unique.forEach(id => {
-          const item = products.find(
-            (element: { productId: any }) => element.productId == id
-          )
-
-          if (item) items.push(item)
-        })
-
-        return (
-          <div className={`${handles.variants}`}>
-            <p className={`${handles.title}`}>Colores</p>
-            <div className={`${handles.var_wrap}`}>
-              {items.map(
-                (element: {
-                  linkText: any
-                  items: { images: { imageUrl: string | undefined }[] }[]
-                }) => (
-                    <a className={`${handles.img_wrap}${
-                      window.location.href.indexOf(
-                        encodeURI(element.linkText)
-                      ) !== -1
-                        ? '--is-active'
-                        : ''
-                      }`} href={`/${element.linkText}/p`}>
-                      <img
-                        height="50px"
-                        className={`${handles.img} mr3 ${
-                          window.location.href.indexOf(
-                            encodeURI(element.linkText)
-                          ) !== -1
-                            ? 'o-50'
-                            : ''
-                          }`}
-                        src={element.items[0].images[0].imageUrl}
-                      />
-                    </a>
-                  )
-              )}
-            </div>
-          </div>
-        )
-      }}
-    </Query>
+    <div className={`${handles.variants}`}>
+      <p className={`${handles.title}`}>Colores</p>
+      <div className={handles['var-wrap']}>
+        {items.map((element: ProductTypes.Product) => (
+          <a
+            key={element.productId}
+            className={`${handles.img_wrap}${
+              route.params.slug === element.linkText ? '--is-active' : ''
+            }`}
+            href={`/${element.linkText}/p`}
+          >
+            <img
+              height="50px"
+              alt={element.productName}
+              className={`${handles.img} mr3 ${
+                route.params.slug === element.linkText ? 'o-50' : ''
+              }`}
+              src={element.items[0].images[0].imageUrl}
+            />
+          </a>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -95,4 +98,4 @@ SimilarProductsVariants.schema = {
   properties: {},
 }
 
-export default injectIntl(SimilarProductsVariants)
+export default SimilarProductsVariants

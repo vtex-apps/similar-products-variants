@@ -72,7 +72,7 @@ function SimilarProductsVariants({
           <a
             key={element.productId}
             className={`${handles.img_wrap}${
-              route.params.slug === element.linkText ? '--is-active' : ''
+              route?.params?.slug === element.linkText ? '--is-active' : ''
             }`}
             href={`/${element.linkText}/p`}
           >
@@ -80,7 +80,7 @@ function SimilarProductsVariants({
               height="50px"
               alt={element.productName}
               className={`${handles.img} mr3 ${
-                route.params.slug === element.linkText ? 'o-50' : ''
+                route?.params?.slug === element.linkText ? 'o-50' : ''
               }`}
               src={element.items[0].images[0].imageUrl}
             />

@@ -4,28 +4,30 @@
     "lint": "tsc --noEmit && eslint --ext ts,tsx ."
   },
   "dependencies": {
-    "@vtex/css-handles": "^1.0.0",
-    "@apollo/client": "^3.0.2",
-    "classnames": "^2.2.6",
-    "ramda": "^0.26.1",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-intl": "^2.7.2",
-    "react-router-dom": "^5.1.2"
+    "apollo-client": "^2.6.8",
+    "react": "^16.12.0",
+    "react-apollo": "^3.1.3",
+    "react-dom": "^16.12.0",
+    "react-intl": "^3.12.0"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.7",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.5",
-    "@types/prop-types": "^15.7.0",
-    "@types/ramda": "^0.26.5",
-    "@types/react": "^16.9.2",
-    "@vtex/test-tools": "^1.1.0",
-    "apollo-client": "^2.5.1",
-    "eslint": "^5.16.0",
-    "eslint-config-vtex-react": "^4.1.0",
-    "prettier": "^1.18.2",
-    "tslint-eslint-rules": "^5.4.0",
-    "typescript": "3.8.3"
+    "@apollo/react-testing": "^3.1.3",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.8",
+    "@types/react": "^16.9.31",
+    "@vtex/test-tools": "^3.3.2",
+    "@vtex/tsconfig": "^0.4.4",
+    "apollo-cache-inmemory": "^1.6.5",
+    "graphql": "^14.6.0",
+    "typescript": "3.9.7",
+    "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@0.4.4/public/@types/vtex.css-handles",
+    "vtex.order-items": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-items@0.11.1/public/@types/vtex.order-items",
+    "vtex.order-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.9.0/public/@types/vtex.order-manager",
+    "vtex.product-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-context@0.9.9/public/@types/vtex.product-context",
+    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.128.2/public/@types/vtex.render-runtime",
+    "vtex.search-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-graphql@0.43.0/public/@types/vtex.search-graphql",
+    "vtex.similar-products-variants": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.similar-products-variants@0.0.2/public/@types/vtex.similar-products-variants",
+    "vtex.store-resources": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.79.0/public/@types/vtex.store-resources",
+    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.138.2/public/@types/vtex.styleguide"
   }
 }

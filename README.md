@@ -52,8 +52,17 @@ Add the similar-products-variants block to the store theme template where you de
       "share#default"
     ]
   },
+  "similar-products-variants": {
+      "props": {
+          "imageLabel": "swatch"
+      }
+  },
 ...
 ```
+
+| Prop name    | Type   | Description                                                                                                   | Default value |
+|--------------|--------|---------------------------------------------------------------------------------------------------------------| ------------- |
+| `imageLabel` | String | Define which image will be displayed. If the label does not exist or is not defined, the first image is used. | `null`        |
 
 *Notice that this block depends on the product context, so its recomended to declare it inside the product page contex. If the SKU doesn't have any similar product configured on the catalog the component wont render anything.*
 

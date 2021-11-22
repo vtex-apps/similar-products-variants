@@ -15,7 +15,11 @@ interface SimilarProductsVariantsProps {
       productId: string
     }
   },
-  imageLabel: string
+  imageLabel: string,
+  textLabel: {
+    specificationGroupName: string,
+    specificationName: string
+  }
 }
 
 const CSS_HANDLES = [
@@ -24,11 +28,13 @@ const CSS_HANDLES = [
   'var-wrap',
   'img_wrap',
   'img',
+  'textLabel'
 ] as const
 
 function SimilarProductsVariants({
   productQuery,
-  imageLabel
+  imageLabel,
+  textLabel,
 }: SimilarProductsVariantsProps) {
   const handles = useCssHandles(CSS_HANDLES)
   const intl = useIntl()
@@ -81,6 +87,18 @@ function SimilarProductsVariants({
               : element.items[0].images.findIndex(image => image.imageLabel === imageLabel)
 
           const srcImage = element.items[0].images[imageIndex].imageUrl
+
+          // Labels
+          let indexSpecificationGroup = -1,
+              indexSpecification      = -1;
+
+          if ( element.specificationGroups.length >= 0 && element.specificationGroups.find( group => group.name === textLabel?.specificationGroupName ) ) {
+            indexSpecificationGroup = element.specificationGroups.findIndex( group => group.name === textLabel?.specificationGroupName )
+            if ( indexSpecificationGroup !== -1 && element.specificationGroups[indexSpecificationGroup].specifications.find( specification => specification.name === textLabel?.specificationName ) ) {
+              indexSpecification = element.specificationGroups[indexSpecificationGroup].specifications.findIndex(specification => specification.name === textLabel?.specificationName)
+            }
+          }
+
           return (
             <Link key={element.productId} {...{
               page: 'store.product',
@@ -101,6 +119,13 @@ function SimilarProductsVariants({
                     }`
                   }
                 />
+                {
+                  indexSpecificationGroup > -1 && 
+                    indexSpecification > -1 &&
+                    <span className={`${handles.textLabel}`}>
+                      { element.specificationGroups[ indexSpecificationGroup ].specifications[ indexSpecification ].values[0] }
+                    </span>
+                }
               </span>
             </Link>
           )

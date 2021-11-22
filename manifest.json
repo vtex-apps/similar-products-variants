@@ -6,6 +6,7 @@
   "description": "similar-products-variants",
   "defaultLocale": "en",
   "builders": {
+    "messages": "1.x",
     "store": "0.x",
     "react": "3.x"
   },

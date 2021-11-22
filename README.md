@@ -20,6 +20,10 @@ vtex install vtex.similar-products-variants
 }
 ```
 
+3. Add similar products in the SKU configuration section.
+
+![image](https://user-images.githubusercontent.com/65255533/142908816-41a4d093-5680-4153-9c60-9d986b077fb1.png)
+
 ## Usage
 
 Add the similar-products-variants block to the store theme template where you desire to display a similar product list. For example:

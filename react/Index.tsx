@@ -82,15 +82,14 @@ function SimilarProductsVariants({
 
           const srcImage = element.items[0].images[imageIndex].imageUrl
           return (
-            <Link {...{
+            <Link key={element.productId} {...{
               page: 'store.product',
               params: {
                 slug: element?.linkText,
                 id: element?.productId,
               },
             }}>
-              <a
-                key={element.productId}
+              <span
                 className={`${handles.img_wrap}${route?.params?.slug === element.linkText ? '--is-active' : ''
                   }`}
               >
@@ -102,7 +101,7 @@ function SimilarProductsVariants({
                     }`
                   }
                 />
-              </a>
+              </span>
             </Link>
           )
         })}

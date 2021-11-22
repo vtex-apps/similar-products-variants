@@ -1,11 +1,12 @@
 {
   "vendor": "vtex",
   "name": "similar-products-variants",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "title": "similar-products-variants",
   "description": "similar-products-variants",
   "defaultLocale": "en",
   "builders": {
+    "messages": "1.x",
     "store": "0.x",
     "react": "3.x"
   },

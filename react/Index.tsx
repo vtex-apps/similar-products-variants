@@ -3,7 +3,6 @@ import type { ProductTypes } from 'vtex.product-context'
 import { useProduct } from 'vtex.product-context'
 import { useQuery } from 'react-apollo'
 import { useCssHandles } from 'vtex.css-handles'
-import { useRuntime } from 'vtex.render-runtime'
 import { useIntl } from 'react-intl'
 import { Link } from 'vtex.render-runtime'
 
@@ -33,7 +32,6 @@ function SimilarProductsVariants({
   const handles = useCssHandles(CSS_HANDLES)
   const intl = useIntl()
   const productContext = useProduct()
-  const { route } = useRuntime()
   const productId =
     productQuery?.product?.productId ?? productContext?.product?.productId
 
@@ -91,14 +89,13 @@ function SimilarProductsVariants({
             }}>
               <a
                 key={element.productId}
-                className={`${handles.img_wrap}${route?.params?.slug === element.linkText ? '--is-active' : ''
-                  }`}
+                className={`${handles.img_wrap}${productContext?.product?.linkText === element.linkText ? '--is-active' : ''}`}
               >
                 <img
                   src={srcImage}
                   alt={element.productName}
                   height="50px"
-                  className={`${handles.img} mr3 ${route?.params?.slug === element.linkText ? 'o-50' : ''
+                  className={`${handles.img} mr3 ${productContext?.product?.linkText === element.linkText ? 'o-50' : ''
                     }`
                   }
                 />

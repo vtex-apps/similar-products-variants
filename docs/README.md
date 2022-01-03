@@ -6,27 +6,26 @@ The Similar Products Variants app returns similar products related to an SKU so 
 ![similar-in-action](https://user-images.githubusercontent.com/67270558/147780521-db76029b-c1fa-4627-a8bb-fa7485355424.png)
 
 ## Before you start
-Set up similar products in your store’s **Products and SKU**
-
-Access your store’s Admin and go to **Products > Catalog > Products and SKU**.
-In **Products and SKU**, in the column **SKU**, click on the desired SKU.
-In the field **Similar (Alternative Products)**, type the product name you desire
+1. Set up similar products in your store’s **Products and SKU.** Access your store’s Admin and go to **Products > Catalog > Products and SKU**.
+2. In **Products and SKU**, in the column **SKU**, click on the desired SKU.
+3. In the field **Similar (Alternative Products)**, type the product name you desire
 
 ![similar-field](https://user-images.githubusercontent.com/67270558/147780337-ccc0d622-535e-47ce-9ede-d86f1d571546.gif)
-Then, In **Products and SKU**, in the column **SKU**, click on the one you have added in the last step.
-Go to the `Images` tab, and on the field `Label`, type a name to identify the image displayed in the thumbnail through the `imageLabel` prop of the `Similar Products` Variants app.
 
-Now, follow the [app’s configuration below](#configuration) to show the similar products you set up.
+4. Then, In **Products and SKU**, in the column **SKU**, click on the one you have added in the last step.
+5. Go to the `Images` tab, and on the field `Label`, type a name to identify the image displayed in the thumbnail through the `imageLabel` prop of the `Similar Products` Variants app.
+
+Now, follow the [app’s configuration below](#configuration) to show the similar products you have set up.
 
 
 ## Configuration
 
-Using [VTEX IO CLI](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-vtex-io-cli-installation-and-command-reference), install the app by running the following:
+1. Using [VTEX IO CLI](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-vtex-io-cli-installation-and-command-reference), install the app by running the following:
 
 ```bash
 vtex install vtex.similar-products-variants
 ```
-Add the `vtex.similar-products-variants` app to your theme's dependencies in the `manifest.json`
+2. Add the `vtex.similar-products-variants` app to your theme's dependencies in the `manifest.json`
 
 ```json
 "dependencies": {
@@ -34,7 +33,7 @@ Add the `vtex.similar-products-variants` app to your theme's dependencies in the
 }
 ```
 
-Add the `similar-products-variants` block to the product template you desire, such as `store.product`, to display a similar product list. 
+3. Add the `similar-products-variants` block to the product template you desire, such as `store.product`, to display a similar product list. 
 
 
 ```json

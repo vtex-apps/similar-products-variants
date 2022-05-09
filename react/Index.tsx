@@ -69,6 +69,10 @@ function SimilarProductsVariants({
     if (item) items.push(item)
   })
 
+  if( items.length == 0 ){
+    return <></>
+  }
+
   return (
     <div className={`${handles.variants}`}>
       <p className={`${handles.title}`}>{intl.formatMessage({ id: "store/title.label" })}</p>

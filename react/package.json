@@ -26,7 +26,7 @@
     "vtex.product-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-context@0.10.0/public/@types/vtex.product-context",
     "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime",
     "vtex.search-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-graphql@0.47.2/public/@types/vtex.search-graphql",
-    "vtex.similar-products-variants": "https://roo--paragonsports.myvtex.com/_v/private/typings/linked/v1/vtex.similar-products-variants@0.0.7+build1637602189/public/@types/vtex.similar-products-variants",
+    "vtex.similar-products-variants": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.similar-products-variants@0.0.2/public/@types/vtex.similar-products-variants",
     "vtex.store-resources": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.85.0/public/@types/vtex.store-resources",
     "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.145.2/public/@types/vtex.styleguide"
   },

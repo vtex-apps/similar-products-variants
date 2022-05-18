@@ -74,7 +74,15 @@ vtex install vtex.similar-products-variants
 
 | Prop name  | Type | Description                                                                                                 | Default value |
 |--------------|--------|------------------------------------| ------------- |
-| `imageLabel` | String | The identifier of the image thumbnail displayed for each variant.  The identifier is set in the Admin’s Catalog. If the label does not exist or is not defined, the first image is used. | `null`  |
+| `imageLabel` | `string` | Define which image will be displayed. If the label does not exist or is not defined, the first image is used. | `null`        |
+| `textLabel` | `object` | Define the text label that will be displayed for each similar product, this text is obtained from some product specification. | `null` |
+
+- **`textLabel` object:**
+
+| Prop name    | Type   | Description                                                                                                   | Default value |
+|--------------|--------|---------------------------------------------------------------------------------------------------------------| ------------- |
+| `specificationGroupName` | `string` | Name of specification group where is the product specification that will be use as text label. | `null` |
+| `specificationName` | `string` | Name of product specification from which the value to display will be taken. | `null` |
 
 
 ## Customization

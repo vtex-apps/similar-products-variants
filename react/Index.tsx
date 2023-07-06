@@ -69,6 +69,10 @@ function SimilarProductsVariants({
     if (item) items.push(item)
   })
 
+  if( items.length == 0 ){
+    return <></>
+  }
+
   return (
     <div className={`${handles.variants}`}>
       <p className={`${handles.title}`}>{intl.formatMessage({ id: "store/title.label" })}</p>
@@ -82,18 +86,16 @@ function SimilarProductsVariants({
 
           const srcImage = element.items[0].images[imageIndex].imageUrl
           return (
-            <Link {...{
+            <Link 
+              key={element.productId}
+              className={`${handles.img_wrap}${route?.params?.slug === element.linkText ? '--is-active' : ''}`}
+              {...{
               page: 'store.product',
               params: {
-                slug: element?.linkText,
-                id: element?.productId,
+              slug: element?.linkText,
+              id: element?.productId,
               },
             }}>
-              <a
-                key={element.productId}
-                className={`${handles.img_wrap}${route?.params?.slug === element.linkText ? '--is-active' : ''
-                  }`}
-              >
                 <img
                   src={srcImage}
                   alt={element.productName}
@@ -102,7 +104,6 @@ function SimilarProductsVariants({
                     }`
                   }
                 />
-              </a>
             </Link>
           )
         })}

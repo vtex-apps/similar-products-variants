@@ -81,10 +81,11 @@ vtex install vtex.similar-products-variants
 
 To apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-| CSS Handles | 
-| ----------- |
-| `variants`  |
-| `title`     |
-| `var-wrap`  |
-| `img_wrap`  |
-| `img`       |
+| CSS Handles            |
+| -----------            |
+| `variants`             |
+| `title`                |
+| `var-wrap`             |
+| `img_wrap`             |
+| `img_wrap--is-active`  |
+| `img`                  |

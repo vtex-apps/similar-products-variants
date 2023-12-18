@@ -5292,10 +5292,6 @@ verror@1.10.0:
   version "0.47.2"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-graphql@0.47.2/public/@types/vtex.search-graphql#9bc27e570e10137514135b80afebc007f651be87"
 
-"vtex.similar-products-variants@https://roo--paragonsports.myvtex.com/_v/private/typings/linked/v1/vtex.similar-products-variants@0.0.7+build1637602189/public/@types/vtex.similar-products-variants":
-  version "0.0.7"
-  resolved "https://roo--paragonsports.myvtex.com/_v/private/typings/linked/v1/vtex.similar-products-variants@0.0.7+build1637602189/public/@types/vtex.similar-products-variants#57238fb747bf1331457aedaeedb203c519b7708e"
-
 "vtex.store-resources@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.85.0/public/@types/vtex.store-resources":
   version "0.85.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.85.0/public/@types/vtex.store-resources#c320bf775471cec37977bfb8af2cfccd4c857c63"

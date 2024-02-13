@@ -15,7 +15,8 @@ interface SimilarProductsVariantsProps {
       productId: string
     }
   },
-  imageLabel: string
+  imageLabel: string,
+  order?: 'ASC' | 'DESC'
 }
 
 const CSS_HANDLES = [
@@ -26,9 +27,13 @@ const CSS_HANDLES = [
   'img',
 ] as const
 
+const getItemsSorted = (items: ProductTypes.Product[], order: 'ASC' | 'DESC') => {
+  return items.sort((a,b) => (order === 'ASC' ? a : b).linkText.localeCompare((order === 'ASC' ? b : a).linkText))
+}
 function SimilarProductsVariants({
   productQuery,
-  imageLabel
+  imageLabel,
+  order
 }: SimilarProductsVariantsProps) {
   const handles = useCssHandles(CSS_HANDLES)
   const intl = useIntl()
@@ -73,11 +78,13 @@ function SimilarProductsVariants({
     return <></>
   }
 
+  const itemsSorted = order ? getItemsSorted(items, order) : items
+  
   return (
     <div className={`${handles.variants}`}>
       <p className={`${handles.title}`}>{intl.formatMessage({ id: "store/title.label" })}</p>
       <div className={handles['var-wrap']}>
-        {items.map((element: ProductTypes.Product) => {
+        {itemsSorted.map((element: ProductTypes.Product) => {
           const imageIndex = imageLabel === undefined
             ? 0
             : element.items[0].images.findIndex(image => image.imageLabel === imageLabel) === -1
@@ -116,7 +123,9 @@ SimilarProductsVariants.schema = {
   title: 'SimilarProducts Variants',
   description: 'SimilarProducts Variants',
   type: 'object',
-  properties: {},
+  properties: {
+
+  },
 }
 
 export default SimilarProductsVariants

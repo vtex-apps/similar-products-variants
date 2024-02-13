@@ -74,7 +74,8 @@ vtex install vtex.similar-products-variants
 
 | Prop name  | Type | Description                                                                                                 | Default value |
 |--------------|--------|------------------------------------| ------------- |
-| `imageLabel` | String | The identifier of the image thumbnail displayed for each variant.  The identifier is set in the Admin’s Catalog. If the label does not exist or is not defined, the first image is used. | `null`  |
+| `imageLabel` | `string` | The identifier of the image thumbnail displayed for each variant.  The identifier is set in the Admin’s Catalog. If the label does not exist or is not defined, the first image is used. | `null`  |
+| `order` | `enum` | Determines whether the variants should be alphabetically sorted. If undefined no ordenation is followed. Possible values are `ASC` (ascendent) and `DESC` (descendent). | `undefined` | 
 
 
 ## Customization
